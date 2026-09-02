@@ -5,11 +5,16 @@
   var nav = document.querySelector('.nav');
 
   /* --- Active nav link (derived from filename) --- */
-  var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  if (page === '') page = 'index.html';
+  function slug(u) {
+    return (u || '').toLowerCase()
+      .replace(/[?#].*$/, '')
+      .replace(/\/+$/, '')
+      .replace(/\.html$/, '')
+      .replace(/^.*\//, '') || 'index';
+  }
+  var here = slug(location.pathname);
   document.querySelectorAll('.nav__links a').forEach(function (a) {
-    var href = (a.getAttribute('href') || '').toLowerCase();
-    if (href === page) a.classList.add('active');
+    if (slug(a.getAttribute('href')) === here) a.classList.add('active');
   });
 
   /* --- Nav scroll state + scroll progress --- */
