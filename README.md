@@ -51,8 +51,29 @@ python3 -m http.server 8000
 ```
 Then visit http://localhost:8000
 
-## Deploy — Cloudflare Pages
-Connect this GitHub repo in the Cloudflare dashboard:
-- Build command: *(none)*
-- Build output directory: `/`
-- Every push to `main` auto-deploys.
+## Deploy — Cloudflare Workers (Static Assets)
+
+Configured in `wrangler.jsonc` as an assets-only Worker named `cmf-title`.
+No build step; the repo root is the asset directory, and `.assetsignore` keeps
+`.git`, `_unused`, the README and the source logo out of the upload.
+
+Deploy from this folder:
+```
+npx wrangler@latest deploy
+```
+
+First time on a new machine, authenticate once with `npx wrangler login`.
+
+### Custom domain
+After the first deploy, in the Cloudflare dashboard:
+Workers & Pages -> `cmf-title` -> Settings -> Domains & Routes -> Add custom domain
+-> `cmftitle.com` and `www.cmftitle.com`.
+
+### Auto-deploy on push (optional)
+Workers & Pages -> `cmf-title` -> Settings -> Build -> Connect a repository
+-> `AaronPilk/CMF-title`. Leave the build command empty; deploy command
+`npx wrangler deploy`.
+
+## Pages
+- `index.html`, `services.html`, `homeowners.html`, `contact.html`
+- `404.html` — served for unmatched routes (`not_found_handling: "404-page"`)

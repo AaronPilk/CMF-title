@@ -1,0 +1,9 @@
+**/node_modules
+**/.DS_Store
+**/.git
+**/.gitignore
+.assetsignore
+wrangler.jsonc
+README.md
+_unused
+CMF Logo Final.png

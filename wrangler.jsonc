@@ -1,0 +1,14 @@
+{
+  // CMF Title — purely static site on Workers Static Assets.
+  // No Worker script: assets are served directly from the repo root.
+  "name": "cmf-title",
+  "compatibility_date": "2026-09-02",
+  "assets": {
+    "directory": "./",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
