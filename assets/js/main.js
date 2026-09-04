@@ -135,31 +135,6 @@
     }
   }
 
-  /* --- Contact form -> mailto --- */
-  var cf = document.getElementById('contactForm');
-  if (cf) {
-    cf.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var g = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
-      var name = g('name'), email = g('email'), phone = g('phone'), topic = g('topic'), msg = g('message');
-      var note = document.getElementById('formNote');
-      if (!name || !email) {
-        if (note) { note.textContent = 'Please add your name and email so we can reply.'; note.style.color = '#b5715a'; }
-        return;
-      }
-      var subject = 'CMF Title - ' + (topic || 'Inquiry') + ' from ' + name;
-      var body =
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n' +
-        'Phone: ' + phone + '\n' +
-        'Topic: ' + topic + '\n\n' +
-        'Details:\n' + msg + '\n';
-      window.location.href = 'mailto:orders@cmftitle.com?subject=' +
-        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      if (note) { note.textContent = 'Opening your email app… if nothing happens, email orders@cmftitle.com directly.'; note.style.color = ''; }
-    });
-  }
-
   /* --- Current year --- */
   var yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
