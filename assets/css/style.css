@@ -591,3 +591,40 @@ p{color:var(--ink-soft);font-size:clamp(1rem,1.2vw,1.11rem)}
 .action-card__note{margin-top:32px;padding-top:26px;border-top:1px solid var(--line)}
 .action-card__note h3{font-size:1rem;margin-bottom:15px;letter-spacing:0}
 .action-card__note p{font-size:.92rem;color:var(--muted);margin-top:18px}
+
+/* ---------- 2026-09 revision: simplified hero label, 2x3 benefits, airier rhythm ---------- */
+.hero__eyebrow{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--brand-lift);margin-bottom:22px}
+.hero h1{margin-bottom:24px}
+.hero__sub{max-width:560px}
+
+/* benefits: consistent 2x3 grid, roomier cards */
+.benefits{gap:20px}
+.benefits .feature{padding:24px 26px;align-items:flex-start}
+.benefits .feature span{line-height:1.45;display:block;margin-top:2px}
+@media (max-width:980px){ .benefits{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .benefits{grid-template-columns:1fr} }
+
+/* underwriter band is typographic now that the logo lockup is gone */
+.band .partner h2{max-width:720px;margin:0 auto}
+
+/* more whitespace between major sections */
+.section{padding:clamp(80px,11vw,140px) 0}
+.section--tight{padding:clamp(56px,8vw,100px) 0}
+
+/* progressive step markers reinforce "move forward" without arrows */
+.steps::before{background:linear-gradient(90deg,rgba(18,66,120,.30),rgba(91,118,114,.14))}
+.step__n{font-variant-numeric:tabular-nums}
+
+/* Proof points carry words ("Commonwealth", "NC & SC"), not short numerals —
+   scale the value type down so all four read as one set and fit at 390px. */
+.stat-card b{font-size:clamp(1.2rem,2vw,1.6rem);letter-spacing:-.018em;line-height:1.22}
+.stat-card span{font-size:13px;margin-top:6px}
+.stat-card{padding:26px 18px}
+@media (max-width:720px){
+  .stats{grid-template-columns:repeat(2,1fr);gap:14px}
+  .stat-card{padding:20px 12px}
+  .stat-card b{font-size:1.05rem}
+  .stat-card span{font-size:12px}
+}
+@media (max-width:400px){ .stats{grid-template-columns:1fr} }
